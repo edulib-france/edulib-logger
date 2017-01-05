@@ -30,6 +30,11 @@ class Logger extends winston.Logger {
     super({ level: options.level || 'info', transports });
   }
 
+  expressLogger(req, res, next) {
+    this.info('request', { url: req.originalUrl, ip: req.ip });
+    next();
+  }
+
 }
 
 module.exports = Logger;
