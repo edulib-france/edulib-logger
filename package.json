@@ -1,0 +1,21 @@
+{
+  "name": "edulib-logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/edulib/edulib-logger.git"
+  },
+  "author": "Éric Hervé <eric.herve@edulib.fr>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/edulib/edulib-logger#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.4.2"
+  }
+}
