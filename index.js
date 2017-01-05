@@ -14,7 +14,8 @@ class Logger extends winston.Logger {
     if (options.console !== false) {
       transports.push(new(winston.transports.Console)({
         timestamp: true,
-        level: options.consoleLevel || options.level || 'info'
+        level: options.consoleLevel || options.level || 'info',
+        label: options.label
       }));
     }
     if (options.file === true) {
@@ -24,15 +25,18 @@ class Logger extends winston.Logger {
         filename: path.join(folder, 'log'),
         datePattern: '.dd-MM-yyyy',
         timestamp: true,
-        level: options.fileLevel || options.level || 'info'
+        level: options.fileLevel || options.level || 'info',
+        label: options.label
       }));
     }
     super({ level: options.level || 'info', transports });
   }
 
-  expressLogger(req, res, next) {
-    this.info('request', { url: req.originalUrl, ip: req.ip });
-    next();
+  expressLogger(msg) {
+    return (req, res, next) => {
+      this.info(msg || 'express request', { url: req.originalUrl, ip: req.ip });
+      next();
+    };
   }
 
 }
