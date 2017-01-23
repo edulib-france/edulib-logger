@@ -32,9 +32,12 @@ class Logger extends winston.Logger {
     super({ level: options.level || 'info', transports });
   }
 
-  expressLogger(msg) {
+  expressLogger(options) {
+    options = options || {};
     return (req, res, next) => {
-      this.info(msg || 'express request', { url: req.originalUrl, ip: req.ip });
+      var data = { url: req.originalUrl, ip: req.ip };
+      if (options.uuid) { data[options.uuid] = req[options.uuid]; }
+      this.info(options.msg || 'express request', data);
       next();
     };
   }
