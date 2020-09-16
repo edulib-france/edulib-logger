@@ -8,11 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/edulib/edulib-logger.git"
+    "url": "git+ssh://git@github.com/edulib-france/edulib-logger.git",
   },
-  "author": "Éric Hervé <eric.herve@edulib.fr>",
+  "author": "Edulib",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/edulib/edulib-logger#readme",
   "dependencies": {
     "mkdirp": "^0.5.1",
     "winston": "^2.2.0",
